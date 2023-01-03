@@ -64,6 +64,7 @@ class CursoViewSet(viewsets.ModelViewSet):
     serializer_class = CursoSerializer
     pagination_class = LargeResultsSetPagination
 
+    #sobrescrevendo o funcionamento da função list que faz o GET dos cursos para aceitar filtro
     def list(self,request:Request):
         #caso possua filtro aplica
         if('filtro' in request.query_params):
