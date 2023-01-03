@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 
-Token: 535de0c2f1e0e0d7d42ff452c31e393fae362397
+Token Lucas: 535de0c2f1e0e0d7d42ff452c31e393fae362397
+
+Token Felicity: 45fb16e1fd5e8bc1facedacdd699310e888ec170
 
 """
 
