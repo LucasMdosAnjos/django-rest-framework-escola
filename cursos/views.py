@@ -9,6 +9,7 @@ from django.http.request import HttpRequest
 from rest_framework import mixins
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import permissions
+from rest_framework import throttling
 
 from .models import Curso, Avaliacao
 from .serializers import CursoSerializer, AvaliacaoSerializer
