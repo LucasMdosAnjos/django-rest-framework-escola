@@ -11,6 +11,12 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'curso', 'nome', 'email', 'comentario', 'avaliacao', 'criacao', 'ativo'
         )
+    
+    def validate_avaliacao(self,valor):
+        if valor in range(1, 6): # 1, 2, 3, 4, 5
+            return valor
+        else:
+            raise serializers.ValidationError('A avaliação precisa ser um inteiro entre 1 e 5')
 
 class CursoSerializer(serializers.ModelSerializer):
     #Nested Relationship
