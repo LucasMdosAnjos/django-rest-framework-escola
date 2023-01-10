@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from cursos.models import Curso, Avaliacao
-
+from django.db.models import Avg
 
 class AvaliacaoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,6 +30,15 @@ class CursoSerializer(serializers.ModelSerializer):
 
     #Slug Related Field
     avaliacoes = serializers.SlugRelatedField(many=True,read_only=True,slug_field='avaliacao')
+
+    media_avaliacoes = serializers.SerializerMethodField()
+
+    def get_media_avaliacoes(self, obj):
+        media:float = obj.avaliacoes.aggregate(Avg('avaliacao')).get('avaliacao__avg')
+        if media is None:
+            return 0
+        return media
+
     class Meta:
         model = Curso
-        fields = ('id','titulo','url','criacao','ativo','avaliacoes')
+        fields = ('id','titulo','url','criacao','ativo','avaliacoes','media_avaliacoes')
